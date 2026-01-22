@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aditya Raj | Data Analyst & AI Enthusiast</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+    <div class="cursor-trail"></div>
+
+    <!-- Global Particle Canvas Background -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Global Floating Orbs & Bubbles -->
+    <div class="global-bg-elements">
+        <div class="floating-orb orb-1"></div>
+        <div class="floating-orb orb-2"></div>
+        <div class="floating-orb orb-3"></div>
+        <div class="floating-orb orb-4"></div>
+        <div class="floating-orb orb-5"></div>
+        <!-- Additional Floating Bubbles -->
+        <div class="bubble bubble-1"></div>
+        <div class="bubble bubble-2"></div>
+        <div class="bubble bubble-3"></div>
+        <div class="bubble bubble-4"></div>
+        <div class="bubble bubble-5"></div>
+        <div class="bubble bubble-6"></div>
+        <div class="bubble bubble-7"></div>
+        <div class="bubble bubble-8"></div>
+        <div class="bubble bubble-9"></div>
+        <div class="bubble bubble-10"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="glass-nav">
+        <div class="logo">Aditya <span class="accent">Raj</span></div>
+
+        <!-- Desktop Nav -->
+        <ul class="nav-links">
+            <li><a href="#about" class="hover-trigger">About</a></li>
+            <li><a href="#skills" class="hover-trigger">Skills</a></li>
+            <li><a href="#projects" class="hover-trigger">Projects</a></li>
+            <li><a href="#experience" class="hover-trigger">Experience</a></li>
+            <li><a href="#certifications" class="hover-trigger">Certifications</a></li>
+            <li><a href="#contact" class="hover-trigger">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <!-- Theme Toggle -->
+            <button id="theme-toggle" class="theme-toggle hover-trigger" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
+
+            <!-- Resume Button -->
+            <!-- Resume Button -->
+            <button onclick="openModal('resume-modal')" class="btn-primary hover-trigger resume-btn">
+                <span>Download Resume</span> <i class="fas fa-download"></i>
+            </button>
+
+            <!-- Mobile Menu Toggle (3 Dots) -->
+            <button class="mobile-toggle" aria-label="Menu">
+                <i class="fas fa-ellipsis-v"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay">
+        <div class="mobile-nav-content glass-card">
+            <button class="close-mobile-nav"><i class="fas fa-times"></i></button>
+            <ul class="mobile-nav-links">
+                <li><a href="#about" class="hover-trigger">About</a></li>
+                <li><a href="#skills" class="hover-trigger">Skills</a></li>
+                <li><a href="#projects" class="hover-trigger">Projects</a></li>
+                <li><a href="#experience" class="hover-trigger">Experience</a></li>
+                <li><a href="#certifications" class="hover-trigger">Certifications</a></li>
+                <li><a href="#contact" class="hover-trigger">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Intro Section -->
+    <section id="intro" class="intro-section">
+        <!-- Local decorations only -->
+
+        <!-- Floating background elements -->
+        <div class="intro-bg-elements">
+            <div class="floating-orb orb-1"></div>
+            <div class="floating-orb orb-2"></div>
+            <div class="floating-orb orb-3"></div>
+            <!-- Code Lines Decoration -->
+            <div class="code-lines">
+                <span class="code-line"></span>
+                <span class="code-line"></span>
+                <span class="code-line"></span>
+            </div>
+        </div>
+
+        <div class="intro-container">
+            <!-- Profile Photo Side -->
+            <div class="intro-photo-wrapper fade-in-left">
+                <div class="photo-frame">
+                    <div class="photo-glow"></div>
+                    <div class="photo-border-animated"></div>
+                    <img src="images/profile-photo.jpg" alt="Aditya Raj" class="profile-photo">
+                    <!-- Tech rings around photo -->
+                    <div class="tech-ring tech-ring-1"></div>
+                    <div class="tech-ring tech-ring-2"></div>
+                </div>
+                <!-- Floating decorative elements -->
+                <div class="photo-decorations">
+                    <div class="deco-dot deco-1"></div>
+                    <div class="deco-dot deco-2"></div>
+                    <div class="deco-dot deco-3"></div>
+                    <div class="deco-ring"></div>
+                    <div class="deco-bracket deco-bracket-left">&lt;</div>
+                    <div class="deco-bracket deco-bracket-right">/&gt;</div>
+                </div>
+            </div>
+
+            <!-- Content Side -->
+            <div class="intro-content fade-in-right">
+                <div class="intro-glass-card">
+                    <div class="status-indicator">
+                        <span class="status-dot"></span>
+                        <span>Available for opportunities</span>
+                    </div>
+                    <p class="intro-greeting">&lt;hello&gt; I'm</p>
+                    <h1 class="intro-name glitch-text" data-text="Aditya Raj">Aditya <span
+                            class="gradient-text">Raj</span></h1>
+                    <div class="intro-role-container">
+                        <span class="role-prefix">&gt;</span>
+                        <span class="role-text" id="role-text">Data Analyst</span>
+                        <span class="cursor-blink">_</span>
+                    </div>
+                    <p class="intro-tagline">Transforming raw data into powerful business insights through analytics,
+                        AI, and visualization.</p>
+                    <div class="intro-cta">
+                        <a href="#projects" class="btn-primary btn-glow hover-trigger"><i
+                                class="fas fa-folder-open"></i> View Projects</a>
+                        <a href="#contact" class="btn-secondary btn-glow hover-trigger"><i
+                                class="fas fa-comment-dots"></i> Let's Talk</a>
+                    </div>
+                </div>
+                <!-- Horizontal scrollable tech badges -->
+                <div class="intro-tech-scroll-wrapper">
+                    <div class="intro-tech-badges">
+                        <span class="tech-mini-badge glass-badge"><i class="fab fa-python"></i> Python</span>
+                        <span class="tech-mini-badge glass-badge"><i class="fas fa-database"></i> SQL</span>
+                        <span class="tech-mini-badge glass-badge"><i class="fas fa-chart-bar"></i> Power BI</span>
+                        <span class="tech-mini-badge glass-badge"><i class="fas fa-brain"></i> AI/ML</span>
+                        <span class="tech-mini-badge glass-badge"><i class="fas fa-chart-pie"></i> Tableau</span>
+                        <span class="tech-mini-badge glass-badge"><i class="fas fa-file-excel"></i> Excel</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-user-circle"></i> About <span class="accent">Me</span></h2>
+            <div class="about-grid">
+                <div class="about-card glass-card fade-in-left">
+                    <h3>The Analyst</h3>
+                    <p>I am a results-driven Data Analyst with strong expertise in Power BI, SQL, Excel, and Python,
+                        specializing in transforming raw and unstructured data into meaningful insights and interactive
+                        dashboards.
+                    </p>
+                    <p>Currently pursuing my <strong>B.Tech in Computer Science & Engineering</strong> at
+                        <strong>Invertis University</strong> (2023–2027), I focus on solving real-world business
+                        problems through
+                        data-driven decision-making. My analytical approach blends statistical thinking with practical
+                        business understanding to deliver accurate, actionable outcomes.
+                    </p>
+                    <p>I have hands-on experience in data cleaning, exploratory data analysis, KPI tracking,
+                        dashboard automation, and performance reporting, ensuring stakeholders can clearly understand
+                        trends,
+                        risks, and opportunities. I continuously upskill in analytics and AI to stay aligned with
+                        industry standards and emerging technologies.
+
+                    </p>
+                </div>
+                <div class="about-stats glass-card fade-in-right">
+                    <div class="stat-item">
+                        <span class="stat-number">10+</span>
+                        <span class="stat-label">Projects Completed</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">30+</span>
+                        <span class="stat-label">Certifications</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">3+</span>
+                        <span class="stat-label">Years Learning</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section (Tree Timeline) -->
+    <section id="education" class="section-alt">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Education</h2>
+            <div class="education-timeline">
+                <!-- B.Tech -->
+                <div class="timeline-item fade-in-up">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content glass-card">
+                        <div class="edu-header">
+                            <div class="edu-icon-small"><i class="fas fa-graduation-cap"></i></div>
+                            <div class="edu-text">
+                                <h3>Bachelor of Technology</h3>
+                                <h4>Invertis University</h4>
+                                <p class="edu-field">Computer Science & Engineering</p>
+                                <p class="edu-duration"><i class="fas fa-calendar"></i> Aug 2023 – Aug 2027 • CGPA: 7.9
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Intermediate -->
+                <div class="timeline-item fade-in-up delay-1">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content glass-card">
+                        <div class="edu-header">
+                            <div class="edu-icon-small"><i class="fas fa-school"></i></div>
+                            <div class="edu-text">
+                                <h3>Intermediate (Science)</h3>
+                                <h4>K.T College, Motihari</h4>
+                                <p class="edu-duration"><i class="fas fa-calendar"></i> Jul 2021 – Mar 2023</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 10th -->
+                <div class="timeline-item fade-in-up delay-2">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content glass-card">
+                        <div class="edu-header">
+                            <div class="edu-icon-small"><i class="fas fa-book"></i></div>
+                            <div class="edu-text">
+                                <h3>Higher Secondary (10th)</h3>
+                                <h4>S P S Balhn More, Areraj</h4>
+                                <p class="edu-duration"><i class="fas fa-calendar"></i> Apr 2019 – Aug 2021</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Arsenal Section -->
+    <section id="skills" class="section arsenal-section">
+        <div class="container">
+
+            <!-- Featured Skills Showcase -->
+
+            <!-- Detailed Skills Grid -->
+            <div class="arsenal-detailed">
+                <h3 class="arsenal-subtitle"><span class="gradient-line"></span>Technologies</h3>
+
+                <div class="skills-category spotlight-card">
+                    <div class="category-header">
+                        <i class="fas fa-database"></i>
+                        <span>Data Analysis</span>
+                    </div>
+                    <div class="skills-tech-grid always-visible">
+                        <div class="tech-badge hover-trigger">
+                            <i class="fab fa-python"></i>
+                            <span>Python</span>
+                            <div class="skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                        <div class="tech-badge hover-trigger">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Power BI</span>
+                            <div class="skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                            </div>
+                        </div>
+                        <div class="tech-badge hover-trigger">
+                            <i class="fas fa-file-excel"></i>
+                            <span>Excel</span>
+                            <div class="skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                        <div class="tech-badge hover-trigger">
+                            <i class="fas fa-chart-area"></i>
+                            <span>Tableau</span>
+                            <div class="skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+
+                        <div class="tech-badge hover-trigger">
+                            <i class="fas fa-database"></i>
+                            <span>SQL</span>
+                            <div class="skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-category spotlight-card">
+                    <div class="category-header">
+                        <i class="fas fa-code"></i>
+                        <span>Python Libraries</span>
+                    </div>
+                    <div class="skills-tech-grid always-visible">
+                        <div class="tech-badge hover-trigger">
+                            <i class="fas fa-cube"></i>
+                            <span>Pandas</span>
+                            <div class="skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                        <div class="tech-badge hover-trigger">
+                            <i class="fas fa-calculator"></i>
+                            <span>NumPy</span>
+                            <div class="skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                        <div class="tech-badge hover-trigger">
+                            <i class="fas fa-chart-pie"></i>
+                            <span>Matplotlib</span>
+                            <div class="skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                        <div class="tech-badge hover-trigger">
+                            <i class="fas fa-palette"></i>
+                            <span>Seaborn</span>
+                            <div class="skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                        <div class="tech-badge hover-trigger">
+                            <i class="fas fa-project-diagram"></i>
+                            <span>TensorFlow</span>
+                            <div class="skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                        <div class="tech-badge hover-trigger">
+                            <i class="fas fa-fire"></i>
+                            <span>PyTorch</span>
+                            <div class="skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-category spotlight-card">
+                    <div class="category-header">
+                        <i class="fas fa-robot"></i>
+                        <span>AI & Machine Learning</span>
+                    </div>
+                    <div class="skills-tech-grid always-visible">
+                        <div class="tech-badge hover-trigger">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Machine Learning</span>
+                            <div class="skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                        <div class="tech-badge hover-trigger">
+                            <i class="fas fa-wand-magic-sparkles"></i>
+                            <span>Generative AI</span>
+                            <div class="skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                        <div class="tech-badge hover-trigger">
+                            <i class="fas fa-comment-dots"></i>
+                            <span>Prompt Engineering</span>
+                            <div class="skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                        <div class="tech-badge hover-trigger">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Predictive Analytics</span>
+                            <div class="skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-category spotlight-card">
+                    <div class="category-header">
+                        <i class="fas fa-wrench"></i>
+                        <span>Development Tools</span>
+                    </div>
+                    <div class="skills-tech-grid always-visible">
+                        <div class="tech-badge hover-trigger">
+                            <i class="fas fa-filter"></i>
+                            <span>Power Query</span>
+                            <div class="skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                        <div class="tech-badge hover-trigger">
+                            <i class="fas fa-table"></i>
+                            <span>DAX</span>
+                            <div class="skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                        <div class="tech-badge hover-trigger">
+                            <i class="fas fa-book"></i>
+                            <span>Jupyter Notebook</span>
+                            <div class="skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                        <div class="tech-badge hover-trigger">
+                            <i class="fab fa-google"></i>
+                            <span>Google Colab</span>
+                            <div class="skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                        <div class="tech-badge hover-trigger">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub</span>
+                            <div class="skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                        <div class="tech-badge hover-trigger">
+                            <i class="fab fa-google"></i>
+                            <span>Google Sheets</span>
+                            <div class="skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                        <div class="tech-badge hover-trigger">
+                            <i class="fas fa-database"></i>
+                            <span>PostgreSQL</span>
+                            <div class="skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-rocket"></i> Featured <span class="accent">Projects</span></h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card glass-card hover-trigger fade-in-up" onclick="openModal('modal1')">
+                    <div class="project-thumb">
+                        <img src="assets/project_mobile_sales.png" alt="Mobile Sales Dashboard">
+                        <div class="overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Mobile Handset Sales Dashboard</h3>
+                        <p class="project-short">Advanced Power BI dashboard analyzing sales, consumer behavior, and
+                            regional trends.</p>
+                        <div class="tech-stack-mini">
+                            <i class="fas fa-chart-bar" title="Power BI"></i>
+                            <i class="fas fa-database" title="Data Modeling"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card glass-card hover-trigger fade-in-up delay-1" onclick="openModal('modal2')">
+                    <div class="project-thumb">
+                        <img src="assets/project_superstore.png" alt="Super Store Dashboard">
+                        <div class="overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Super Store Profit Analysis</h3>
+                        <p class="project-short">End-to-end US retail data solution with YoY trends and geospatial
+                            analysis.</p>
+                        <div class="tech-stack-mini">
+                            <i class="fas fa-chart-bar" title="Power BI"></i>
+                            <i class="fas fa-globe-americas" title="Geospatial"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card glass-card hover-trigger fade-in-up delay-2" onclick="openModal('modal3')">
+                    <div class="project-thumb">
+                        <img src="assets/project_retail_python.png" alt="Retail Sales Analysis">
+                        <div class="overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Retail Sales Python Analysis</h3>
+                        <p class="project-short">Extensive EDA on 1,000 retail transactions using Python, Matplotlib,
+                            and Seaborn.</p>
+                        <div class="tech-stack-mini">
+                            <i class="fab fa-python" title="Python"></i>
+                            <i class="fas fa-code" title="Pandas/NumPy"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card glass-card hover-trigger fade-in-up delay-3" onclick="openModal('modal4')">
+                    <div class="project-thumb">
+                        <img src="assets/calculator_project.png" alt="Calculator App">
+                        <div class="overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Calculator</h3>
+                        <p class="project-short">Modern, user-friendly calculator with clean design for efficient
+                            arithmetic operations.</p>
+                        <div class="tech-stack-mini">
+                            <i class="fab fa-html5" title="HTML"></i>
+                            <i class="fab fa-css3-alt" title="CSS"></i>
+                            <i class="fab fa-js" title="JavaScript"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Experience Section (Tree Timeline) -->
+    <section id="experience" class="section-alt">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-briefcase"></i> Professional <span
+                    class="accent">Experience</span></h2>
+            <div class="experience-timeline">
+                <!-- Altair Data Science Intern -->
+                <div class="timeline-item fade-in-up">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content glass-card">
+                        <div class="exp-header-tree">
+                            <div class="exp-icon-small"><i class="fas fa-briefcase"></i></div>
+                            <div class="exp-text">
+                                <h3>Data Science Intern</h3>
+                                <h4>Altair</h4>
+                                <p class="exp-type">Internship • Remote • 10 weeks</p>
+                                <p class="exp-duration"><i class="fas fa-calendar"></i> Oct 2025 – Dec 2025</p>
+                            </div>
+                        </div>
+                        <div class="exp-details">
+                            <p class="exp-desc">Completed a 10-week Data Science Master Virtual Internship under the
+                                AICTE–EduSkills initiative, supported by Altair. Worked on real-world datasets using
+                                Python,
+                                Exploratory Data Analysis (EDA), machine learning, and data visualization to gain
+                                practical
+                                exposure to industry-level data science workflows.</p>
+                            <div class="exp-highlights">
+                                <h5>Key Highlights:</h5>
+                                <ul>
+                                    <li>Python-based data analysis & preprocessing</li>
+                                    <li>Exploratory Data Analysis (EDA)</li>
+                                    <li>Machine learning model building & evaluation</li>
+                                    <li>Data visualization & insight communication</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Google for Developers -->
+                <div class="timeline-item fade-in-up delay-1">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content glass-card">
+                        <div class="exp-header-tree">
+                            <div class="exp-icon-small"><i class="fab fa-google"></i></div>
+                            <div class="exp-text">
+                                <h3>Student Intern</h3>
+                                <h4>Google for Developers</h4>
+                                <p class="exp-type">Internship • On-site • 10 weeks</p>
+                                <p class="exp-duration"><i class="fas fa-calendar"></i> Apr 2025 – Jun 2025</p>
+                            </div>
+                        </div>
+                        <div class="exp-details">
+                            <p class="exp-desc">Completed a 10-week AI/ML internship with Google for Developers,
+                                focused on applying Artificial Intelligence and Machine Learning concepts to real-world
+                                use cases. Collaborated with cross-functional teams to design and improve machine
+                                learning models, while gaining practical exposure to data analysis, algorithm
+                                optimization, and model performance enhancement. Contributed to projects aimed at
+                                improving user engagement and efficiency in developer-focused tools.</p>
+                            <div class="exp-highlights">
+                                <h5>Key Highlights:</h5>
+                                <ul>
+                                    <li>Applied AI/ML techniques to real-world problem statements</li>
+                                    <li>Collaborated with cross-functional teams on model development</li>
+                                    <li>Performed data analysis and algorithm optimization</li>
+                                    <li>Supported improvements in developer tools and user experience</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Licenses & Certifications -->
+    <section id="certifications" class="section-dark">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-certificate"></i> Licenses & <span
+                    class="accent">Certifications</span></h2>
+            <p class="section-subtitle">Industry-recognized credentials validating hands-on expertise in Data Analytics,
+                AI, Business Intelligence, and Software Development</p>
+
+
+
+            <!-- Certifications Grid -->
+            <div class="cert-grid" id="cert-grid">
+                <!-- Certs will be dynamically loaded via JS -->
+            </div>
+
+            <!-- Skill Emphasis Section -->
+            <div class="skill-emphasis">
+                <h3>Validated <span class="accent">Skills</span></h3>
+                <div class="skill-emphasis-grid">
+                    <div class="emphasis-item"><i class="fas fa-check-circle"></i> Data Analytics & Business
+                        Analytics</div>
+                    <div class="emphasis-item"><i class="fas fa-check-circle"></i> Power BI & Dashboard Development
+                    </div>
+                    <div class="emphasis-item"><i class="fas fa-check-circle"></i> Python for Data Analysis</div>
+                    <div class="emphasis-item"><i class="fas fa-check-circle"></i> SQL & Data Reporting</div>
+                    <div class="emphasis-item"><i class="fas fa-check-circle"></i> Data Visualization & Storytelling
+                    </div>
+                    <div class="emphasis-item"><i class="fas fa-check-circle"></i> Machine Learning & Predictive
+                        Analytics</div>
+                    <div class="emphasis-item"><i class="fas fa-check-circle"></i> Generative AI & Prompt Engineering
+                    </div>
+                    <div class="emphasis-item"><i class="fas fa-check-circle"></i> Responsible AI & Ethics</div>
+                    <div class="emphasis-item"><i class="fas fa-check-circle"></i> Excel & Spreadsheet Analysis</div>
+                    <div class="emphasis-item"><i class="fas fa-check-circle"></i> Software Development Foundations
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container contact-container">
+            <h2 class="section-title"><i class="fas fa-envelope-open-text"></i> Let's <span
+                    class="accent">Connect</span></h2>
+            <p class="contact-sub">Ready to turn data into decision? Let's talk.</p>
+            <div class="contact-grid">
+                <div class="contact-info glass-card fade-in-left">
+                    <h3 style="margin-bottom: 1.5rem; text-align: center;">Connect With Me</h3>
+                    <div class="social-icons-container">
+                        <a href="mailto:aditya8810328@gmail.com" class="social-icon hover-trigger" aria-label="Email"
+                            title="Send me an email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/aditya-raj-767822271/" target="_blank"
+                            class="social-icon hover-trigger" aria-label="LinkedIn" title="LinkedIn Profile">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/aditya88103" target="_blank" class="social-icon hover-trigger"
+                            aria-label="GitHub" title="GitHub Profile">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.instagram.com/aditya_sriwastava/" target="_blank"
+                            class="social-icon hover-trigger" aria-label="Instagram" title="Instagram Profile">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://x.com/adityasriwast10?s=11" target="_blank" class="social-icon hover-trigger"
+                            aria-label="X (Twitter)" title="X Profile">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                style="width: 1.2rem; height: 1.2rem;">
+                                <path
+                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                            </svg>
+                        </a>
+                        <a href="https://www.facebook.com/aditya.shrivastava.9279" target="_blank"
+                            class="social-icon hover-trigger" aria-label="Facebook" title="Facebook Profile">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+                </div>
+                <form class="contact-form glass-card fade-in-right" id="contact-form"
+                    action="https://formspree.io/f/xpwpavzo" method="POST" novalidate>
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Name" class="glass-input" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Email" class="glass-input" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="5" name="message" placeholder="Message" class="glass-input" required></textarea>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <label class="custom-checkbox-container">
+                            <input type="checkbox" id="human-verify-contact">
+                            <span class="checkmark"></span>
+                            Verify you are human
+                        </label>
+                    </div>
+                    <button type="submit" class="btn-primary" id="submit-btn" disabled><span>Send Message</span> <i
+                            class="fas fa-paper-plane"></i></button>
+                    <div id="form-status" class="form-status"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026 Aditya Raj. Built with Data & Passion.</p>
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="scroll-top hover-trigger"><i
+                class="fas fa-arrow-up"></i></button>
+    </footer>
+
+    <!-- Modals -->
+    <div id="modal1" class="modal">
+        <div class="modal-content glass-card">
+            <span class="close-modal" onclick="closeModal('modal1')">&times;</span>
+            <h2>Mobile Handset Sales Dashboard</h2>
+            <p class="modal-meta">Dec 2025 | Power BI</p>
+            <img src="assets/project_mobile_sales.png" alt="Dashboard Full">
+            <div class="modal-body">
+                <h3>Description</h3>
+                <p>Built an advanced Power BI dashboard to analyze mobile handset sales and consumer behavior. Designed
+                    executive KPIs showing Total Sales ($154M), Avg Transaction Value (40K), Units Sold (4K). It
+                    features Brand benchmarking across Apple, Samsung, OnePlus, Vivo and Time-intelligence analysis for
+                    monthly and seasonal trends.</p>
+                <h3>Key Features</h3>
+                <ul>
+                    <li>Interactive maps for Indian city-wise performance.</li>
+                    <li>Payment behavior analysis (UPI, Cards, Cash).</li>
+                    <li>Advanced slicers for drill-down exploration.</li>
+                </ul>
+                <h3>Tools</h3>
+                <p>Power BI, DAX, Power Query</p>
+                <div class="project-links" style="margin-top: 1.5rem; display: flex; gap: 1rem;">
+                    <a href="https://github.com/aditya88103/Mobile-Handset-Sales-Dashboard"
+                        class="btn-secondary hover-trigger">Demo</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modal2" class="modal">
+        <div class="modal-content glass-card">
+            <span class="close-modal" onclick="closeModal('modal2')">&times;</span>
+            <h2>Super Store Sales & Profit</h2>
+            <p class="modal-meta">Dec 2025 | Power BI</p>
+            <img src="assets/project_superstore.png" alt="Dashboard Full">
+            <div class="modal-body">
+                <h3>Description</h3>
+                <p>End-to-end Power BI solution for US retail data. KPI dashboard for Sales ($2M), Profit, Quantity,
+                    Delivery Time. Year-over-Year trend analysis using DAX. Geospatial analysis for state-wise
+                    performance.</p>
+                <h3>Tools</h3>
+                <p>Power BI, DAX, Power Query</p>
+                <div class="project-links" style="margin-top: 1.5rem; display: flex; gap: 1rem;">
+                    <a href="https://github.com/aditya88103/Super-Store-Sales-Profit"
+                        class="btn-secondary hover-trigger">Demo</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modal3" class="modal">
+        <div class="modal-content glass-card">
+            <span class="close-modal" onclick="closeModal('modal3')">&times;</span>
+            <h2>Retail Sales Data Analysis</h2>
+            <p class="modal-meta">Nov 2024 | Python</p>
+            <img src="assets/project_retail_python.png" alt="Analysis Full">
+            <div class="modal-body">
+                <h3>Description</h3>
+                <p>Python-based analysis of 1,000 retail transactions. Extensive EDA with univariate and bivariate
+                    analysis. Data cleaning, missing value handling, outlier detection.</p>
+                <h3>Tools</h3>
+                <p>Pandas, NumPy, Matplotlib, Seaborn, Google Colab</p>
+                <div class="project-links" style="margin-top: 1.5rem; display: flex; gap: 1rem;">
+                    <a href="https://github.com/aditya88103/Retail-Sales-data-analysis"
+                        class="btn-secondary hover-trigger">View Code</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modal4" class="modal">
+        <div class="modal-content glass-card">
+            <span class="close-modal" onclick="closeModal('modal4')">&times;</span>
+            <h2>Calculator</h2>
+            <p class="modal-meta">2024 | HTML, CSS, JavaScript</p>
+            <img src="assets/calculator_project.png" alt="Calculator Full">
+            <div class="modal-body">
+                <h3>Description</h3>
+                <p>This calculator features a modern and user-friendly design, making it easy to perform basic
+                    arithmetic operations efficiently.</p>
+                <h3>Tech Stack</h3>
+                <p>HTML, CSS </p>
+                <div class="project-links" style="margin-top: 1.5rem; display: flex; gap: 1rem;">
+                    <a href="https://github.com/aditya88103/Calculator" class="btn-secondary hover-trigger">View
+                        Code</a>
+                    <a href="https://aditya88103.github.io/Calculator/" class="btn-secondary hover-trigger">Live
+                        Demo</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="resume-modal" class="modal">
+        <div class="modal-content glass-card" style="max-width: 400px; text-align: center;">
+            <span class="close-modal" onclick="closeModal('resume-modal')">&times;</span>
+            <h2><i class="fas fa-file-pdf" style="color: var(--primary-accent); margin-right: 10px;"></i>Download</h2>
+            <p style="margin-bottom: 1.5rem; color: var(--text-muted);">Please verify you are human.</p>
+
+            <div class="form-group checkbox-group" style="justify-content: center; margin-bottom: 2rem;">
+                <label class="custom-checkbox-container">
+                    <input type="checkbox" id="human-verify-resume">
+                    <span class="checkmark"></span>
+                    Verify you are human
+                </label>
+            </div>
+
+            <a href="Resume_Aditya.pdf" download="Aditya_Raj_Resume.pdf" id="resume-download-btn"
+                class="btn-primary disabled-btn"
+                style="width: 100%; justify-content: center; pointer-events: none; opacity: 0.5;">
+                <span>Download Now</span> <i class="fas fa-download"></i>
+            </a>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
