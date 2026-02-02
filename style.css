@@ -2262,17 +2262,18 @@ body.light-theme .glass-badge {
 @media (max-width: 900px) {
     .intro-section {
         min-height: 100vh;
-        height: 100vh;
-        padding: 100px 1.5rem 40px;
-        overflow: hidden;
+        height: auto;
+        padding: 120px 1.5rem 40px;
+        overflow-x: hidden;
     }
 
     .intro-container {
         grid-template-columns: 1fr;
         text-align: center;
         gap: 1.5rem;
-        height: 100%;
-        align-content: center;
+        height: auto;
+        align-content: start;
+        padding-top: 2rem;
     }
 
     .intro-content {
@@ -2460,7 +2461,7 @@ body.light-theme .glass-badge {
 /* Android/Small Mobile (480px and below) */
 @media (max-width: 480px) {
     .intro-section {
-        padding: 130px 1rem 30px;
+        padding: 140px 1rem 30px;
     }
 
     .intro-container {
