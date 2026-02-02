@@ -2460,7 +2460,7 @@ body.light-theme .glass-badge {
 /* Android/Small Mobile (480px and below) */
 @media (max-width: 480px) {
     .intro-section {
-        padding: 80px 1rem 30px;
+        padding: 130px 1rem 30px;
     }
 
     .intro-container {
