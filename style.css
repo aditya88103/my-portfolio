@@ -2261,7 +2261,7 @@ body.light-theme .glass-badge {
 /* Responsive - Fixed Intro + Horizontal Scroll */
 @media (max-width: 900px) {
     .intro-section {
-        min-height: 100vh;
+        min-height: 120vh;
         height: auto;
         padding: 120px 1.5rem 40px;
         overflow-x: hidden;
@@ -5980,4 +5980,5 @@ body.light-theme ::-webkit-scrollbar-track {
 body.light-theme ::-webkit-scrollbar-thumb {
     background: linear-gradient(180deg, #6366f1, #ec4899);
     border: 2px solid #f1f5f9;
+
 }
