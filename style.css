@@ -2263,7 +2263,7 @@ body.light-theme .glass-badge {
     .intro-section {
         min-height: 100vh;
         height: auto;
-        padding: 120px 1.5rem 40px;
+        padding: 160px 1.5rem 40px;
         overflow-x: hidden;
     }
 
@@ -2461,7 +2461,7 @@ body.light-theme .glass-badge {
 /* Android/Small Mobile (480px and below) */
 @media (max-width: 480px) {
     .intro-section {
-        padding: 140px 1rem 30px;
+        padding: 180px 1rem 30px;
     }
 
     .intro-container {
