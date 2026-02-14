@@ -48,6 +48,7 @@
     /* Border width */
     background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     opacity: 0.6;
@@ -241,106 +242,73 @@
 
 /* Light Theme */
 body.light-theme .category-title-box {
-    background: rgba(255, 255, 255, 0.5);
-    border-color: rgba(99, 102, 241, 0.2);
-    box-shadow: 0 5px 15px rgba(99, 102, 241, 0.15);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(99, 102, 241, 0.05));
+    border: 1.5px solid rgba(99, 102, 241, 0.3);
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.12);
 }
 
 body.light-theme .category-title-box::before {
-    background: linear-gradient(90deg, #6366f1, #ec4899);
+    background: linear-gradient(90deg, #6366f1, #ec4899, #8b5cf6);
 }
 
 body.light-theme .category-title-box h3 {
-    color: #1e293b;
+    color: #1a1a2e;
+    font-weight: 700;
 }
 
 body.light-theme .category-title-box i {
     color: #6366f1;
-    filter: drop-shadow(0 0 5px rgba(99, 102, 241, 0.4));
+    filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.4));
 }
 
 body.light-theme .category-title-box:hover {
     box-shadow:
-        0 10px 30px rgba(99, 102, 241, 0.2),
-        0 0 20px rgba(236, 72, 153, 0.15);
-    background: rgba(255, 255, 255, 0.8);
+        0 12px 30px rgba(99, 102, 241, 0.2),
+        0 0 15px rgba(236, 72, 153, 0.1);
+    background: white;
+    transform: translateY(-2px);
 }
 
 
 body.light-theme .skill-mini-box {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 255, 0.9));
-    border-color: rgba(99, 102, 241, 0.2);
+    background: linear-gradient(135deg, #ffffff, rgba(99, 102, 241, 0.03)) !important;
+    border: 1.5px solid rgba(99, 102, 241, 0.35) !important;
+    box-shadow: 0 4px 10px rgba(99, 102, 241, 0.08);
 }
 
 body.light-theme .skill-mini-box:hover {
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(236, 72, 153, 0.08));
-    border-color: #6366f1;
-    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.25);
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(236, 72, 153, 0.06)) !important;
+    border-color: #6366f1 !important;
+    box-shadow:
+        0 10px 25px rgba(99, 102, 241, 0.2),
+        0 0 10px rgba(236, 72, 153, 0.15);
+    transform: translateY(-3px) scale(1.02);
 }
 
 body.light-theme .skill-mini-box i {
     color: #6366f1;
-    filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.5));
+    filter: drop-shadow(0 0 5px rgba(99, 102, 241, 0.3));
 }
 
 body.light-theme .skill-mini-box:hover i {
-    filter: drop-shadow(0 0 15px rgba(99, 102, 241, 0.7));
+    color: #4f46e5;
+    filter: drop-shadow(0 0 8px rgba(79, 70, 229, 0.5));
+}
+
+body.light-theme .skill-mini-box span {
+    color: #1e293b;
+    font-weight: 600;
 }
 
 body.light-theme .mini-progress::after {
-    background: linear-gradient(90deg, #6366f1, #8b5cf6);
-    box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+    background: linear-gradient(90deg, #6366f1, #ec4899);
+    box-shadow: 0 0 12px rgba(99, 102, 241, 0.4);
 }
 
-/* Mobile Responsive */
-@media (max-width: 768px) {
-    .arsenal-section {
-        padding: 3rem 0;
-    }
 
-    .skill-category-section {
-        margin-bottom: 2.5rem;
-    }
 
-    .category-title-box {
-        padding: 0.85rem 2rem;
-        gap: 0.75rem;
-        margin-bottom: 1.75rem;
-    }
+/* Mobile Responsive logic moved to end of file for consistency and to avoid overrides */
 
-    .category-title-box i {
-        font-size: 1.5rem;
-    }
-
-    .category-title-box h3 {
-        font-size: 1.15rem;
-    }
-
-    .skill-mini-box {
-        flex: 0 0 130px;
-        /* WIDER on mobile */
-        padding: 0.5rem 0.4rem;
-    }
-
-    .skill-mini-box i {
-        font-size: 1.3rem;
-    }
-
-    .skill-mini-box span {
-        font-size: 0.75rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .skill-mini-box {
-        flex: 0 0 115px;
-        /* WIDER on small mobile */
-    }
-
-    .category-title-box {
-        padding: 0.5rem 1.25rem;
-    }
-}
 
 
 /* Main Categories Grid */
@@ -1421,69 +1389,214 @@ body.light-theme .skill-progress-bar {
 /* =========================================
    MOBILE FULL WIDTH MARQUEE FIX
    ========================================= */
+/* =========================================
+   CONSOLIDATED MOBILE SKILLS OPTIMIZATION
+   ========================================= */
 @media (max-width: 768px) {
-    .skills-marquee-wrapper {
-        width: 100vw;
-        margin-left: calc(-50vw + 50%);
-        margin-right: calc(-50vw + 50%);
-        border-radius: 0;
-        padding-left: 0;
-        padding-right: 0;
-        /* Minimize fade to almost edges */
-        mask-image: linear-gradient(to right, transparent, black 0.5%, black 99.5%, transparent) !important;
-        -webkit-mask-image: linear-gradient(to right, transparent, black 0.5%, black 99.5%, transparent) !important;
+    .arsenal-section {
+        padding: 2.5rem 0 !important;
     }
 
-    .skills-marquee-content {
-        padding-left: 1rem;
-        /* Start with content */
-        gap: 0.8rem !important;
-        /* Reduced gap between boxes */
+    /* Main Section Container */
+    .skill-category-section {
+        margin-bottom: 2rem !important;
     }
 
-    /* MOBLIE COMPACT ADJUSTMENTS */
-    /* Reduce Category Title Size to prevent wrapping and reduce bulk */
+    /* Skill Category Title Box - Compact & Premium */
     .category-title-box {
-        padding: 0.5rem 1rem !important;
-        /* Reduced padding */
-        gap: 0.5rem !important;
-        max-width: 90%;
-        /* Prevent hitting edges */
+        padding: 0.45rem 1.25rem !important;
+        gap: 0.75rem !important;
+        /* Space between category logo and text */
+        margin-bottom: 1.5rem !important;
+        width: fit-content !important;
+        display: flex !important;
+        border-radius: 40px !important;
     }
 
     .category-title-box h3 {
-        font-size: 0.9rem !important;
-        /* Smaller font to prevent wrap */
-        white-space: nowrap;
-        /* Force single line */
+        font-size: 0.95rem !important;
+        letter-spacing: 0.5px !important;
+        white-space: nowrap !important;
     }
 
     .category-title-box i {
-        font-size: 1.1rem !important;
-        /* Smaller icon */
+        font-size: 1.15rem !important;
     }
 
-    /* Reduce Skill Box Size */
+    /* Main Wrapper - Control padding and overflow */
+    .skills-marquee-wrapper {
+        width: 100% !important;
+        margin: 0 !important;
+        padding-left: 1rem !important;
+        padding-right: 2rem !important;
+        /* Increased space on right side as requested */
+        mask-image: none !important;
+        -webkit-mask-image: none !important;
+        overflow: visible !important;
+    }
+
+    /* Skills Container - Flex Wrap for Grid-like Look */
+    .skills-marquee-content {
+        animation: none !important;
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: flex-start !important;
+        /* Align left to pack more */
+        gap: 0.5rem !important;
+        /* Tight packing between badges */
+        width: 100% !important;
+        transform: none !important;
+        padding: 0.5rem 0 !important;
+    }
+
+    /* Hide redundant duplicate elements on mobile (Marquee duplicates) */
+    .skill-mini-box.skill-duplicate {
+        display: none !important;
+    }
+
+    /* COMPACT CAPSULE SKILL BADGE - Enhanced with Color & Animation */
     .skill-mini-box {
-        flex: 0 0 135px !important;
-        /* Increased slightly for better fit */
-        padding: 0.4rem !important;
-        gap: 0.1rem !important;
+        flex: 0 0 auto !important;
+        width: auto !important;
+        min-width: 0 !important;
+        max-width: fit-content !important;
+        display: inline-flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        padding: 0.45rem 1rem !important;
+        /* Slightly more padding for better look */
+        gap: 0.9rem !important;
+        border-radius: 50px !important;
+
+        /* Vibrant Gradient Background */
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.05)) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+
+        backdrop-filter: blur(10px) !important;
+        height: auto !important;
+        min-height: 34px !important;
+
+        /* Floating Animation */
+        animation: badgeBounce 3s ease-in-out infinite alternate !important;
+        position: relative !important;
+        overflow: hidden !important;
+    }
+
+    /* Shimmer/Sweep Effect */
+    .skill-mini-box::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg,
+                transparent,
+                rgba(255, 255, 255, 0.15),
+                transparent);
+        animation: shimmerSweep 4s infinite linear !important;
+        pointer-events: none;
+    }
+
+    @keyframes badgeBounce {
+        0% {
+            transform: translateY(0);
+        }
+
+        100% {
+            transform: translateY(-4px);
+        }
+    }
+
+    @keyframes shimmerSweep {
+        0% {
+            left: -100%;
+        }
+
+        20% {
+            left: 100%;
+        }
+
+        100% {
+            left: 100%;
+        }
     }
 
     .skill-mini-box i {
         font-size: 1.1rem !important;
-        /* Smaller icon */
+        flex-shrink: 0 !important;
+        color: var(--primary-accent) !important;
+        filter: drop-shadow(0 0 8px var(--primary-accent)) !important;
+        margin: 0 !important;
+    }
+
+    .skill-mini-box span {
+        font-size: 0.78rem !important;
+        font-weight: 600 !important;
+        color: var(--text-main) !important;
+        white-space: nowrap !important;
+        letter-spacing: 0.3px !important;
+    }
+
+    /* Hide progress bars for maximum simplicity */
+    .mini-progress {
+        display: none !important;
+    }
+
+    /* LIGHT THEME VISIBILITY FIXES OR BORDERS */
+    body.light-theme .skill-mini-box {
+        background: linear-gradient(135deg, #ffffff, rgba(99, 102, 241, 0.08)) !important;
+        border: 2px solid rgba(99, 102, 241, 0.45) !important;
+        box-shadow: 0 6px 15px rgba(99, 102, 241, 0.12) !important;
+        animation: badgeBounceLight 3s ease-in-out infinite alternate !important;
+    }
+
+    @keyframes badgeBounceLight {
+        0% {
+            transform: translateY(0);
+            box-shadow: 0 4px 10px rgba(99, 102, 241, 0.1);
+        }
+
+        100% {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.15);
+        }
+    }
+
+    body.light-theme .skill-mini-box span {
+        color: #1e293b !important;
+    }
+
+    body.light-theme .skill-mini-box i {
+        color: #6366f1 !important;
+        filter: drop-shadow(0 0 5px rgba(99, 102, 241, 0.3)) !important;
+    }
+
+    body.light-theme .category-title-box {
+        background: linear-gradient(135deg, #ffffff, rgba(99, 102, 241, 0.06)) !important;
+        border: 1.8px solid rgba(99, 102, 241, 0.3) !important;
+        box-shadow: 0 6px 15px rgba(99, 102, 241, 0.12) !important;
+    }
+
+}
+
+/* Extra small screens adjustments */
+@media (max-width: 480px) {
+    .skills-marquee-wrapper {
+        padding-right: 1.5rem !important;
+    }
+
+    .skills-marquee-content {
+        gap: 0.4rem !important;
+    }
+
+    .skill-mini-box {
+        padding: 0.35rem 0.75rem !important;
+        gap: 0.75rem !important;
     }
 
     .skill-mini-box span {
         font-size: 0.7rem !important;
-        /* Smaller text */
-    }
-
-    .mini-progress {
-        height: 2px !important;
-        /* Thinner progress bar */
-        margin-top: 0.2rem !important;
     }
 }
