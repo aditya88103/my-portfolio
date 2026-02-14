@@ -798,28 +798,53 @@ if (contactForm) {
 
         // Validate inputs
         if (isValid) {
-            // Show success logic here (simulated)
+            // Show loading state
             const btn = contactForm.querySelector('button');
             const originalText = btn.innerHTML;
             btn.innerHTML = 'Sending...';
             btn.disabled = true;
 
-            setTimeout(() => {
-                btn.innerHTML = 'Message Sent! <i class="fas fa-check"></i>';
-                formStatus.innerHTML = '<p class="success-message">Thanks! I will get back to you soon.</p>';
-                contactForm.reset();
-                setTimeout(() => {
-                    btn.innerHTML = originalText;
-                    btn.disabled = false;
-                    formStatus.innerHTML = '';
-                    // Reset Checkbox
-                    document.getElementById('human-verify-contact').checked = false;
-                    document.getElementById('submit-btn').disabled = true;
-                }, 3000);
-            }, 1500);
+            const formData = new FormData(contactForm);
 
-            // NOTE: In a real implementation, you would submit to Formspree here
-            // contactForm.submit(); 
+            fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    btn.innerHTML = 'Message Sent! <i class="fas fa-check"></i>';
+                    formStatus.innerHTML = '<p class="success-message">Thanks! I will get back to you soon.</p>';
+                    contactForm.reset();
+
+                    setTimeout(() => {
+                        btn.innerHTML = originalText;
+                        btn.disabled = false; // logic elsewhere handles re-disabling based on checkbox
+                        formStatus.innerHTML = '';
+                        // Reset Checkbox
+                        const checkbox = document.getElementById('human-verify-contact');
+                        if (checkbox) checkbox.checked = false;
+                        document.getElementById('submit-btn').disabled = true;
+                    }, 3000);
+                } else {
+                    response.json().then(data => {
+                        if (data.errors) {
+                            formStatus.innerHTML = `<p class="error-message">${data.errors.map(error => error.message).join(", ")}</p>`;
+                        } else {
+                            formStatus.innerHTML = '<p class="error-message">Oops! There was a problem submitting your form</p>';
+                        }
+                        formStatus.className = 'form-status error';
+                        btn.innerHTML = originalText;
+                        btn.disabled = false;
+                    });
+                }
+            }).catch(error => {
+                formStatus.innerHTML = '<p class="error-message">Oops! There was a problem submitting your form</p>';
+                formStatus.className = 'form-status error';
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            });
         } else {
             formStatus.innerHTML = `<p class="error-message">${errorMessage}</p>`;
             formStatus.className = 'form-status error';
@@ -936,5 +961,242 @@ const techObserver = new IntersectionObserver((entries) => {
 const skillsSection = document.querySelector('.skills-tech-grid');
 if (skillsSection) {
     techObserver.observe(skillsSection);
+}
+
+// =========================================
+// 16. HERO SECTION MOUSE TRACKING EFFECTS
+// =========================================
+const introSection = document.querySelector('.intro-section');
+const introGlassCard = document.querySelector('.intro-glass-card');
+
+if (introSection && window.innerWidth > 768) {
+    // Mouse spotlight effect
+    introSection.addEventListener('mousemove', (e) => {
+        const rect = introSection.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+        introSection.style.setProperty('--mouse-x', `${x}%`);
+        introSection.style.setProperty('--mouse-y', `${y}%`);
+    });
+
+    // Magnetic effect on glass card
+    if (introGlassCard) {
+        introGlassCard.addEventListener('mousemove', (e) => {
+            const rect = introGlassCard.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+
+            const moveX = x * 0.02;
+            const moveY = y * 0.02;
+
+            introGlassCard.style.transform = `translateY(-5px) translate(${moveX}px, ${moveY}px)`;
+        });
+
+        introGlassCard.addEventListener('mouseleave', () => {
+            introGlassCard.style.transform = 'translateY(0)';
+        });
+    }
+}
+
+// =========================================
+// 17. PARTICLE TRAIL ON MOUSE MOVE
+// =========================================
+let particleTrailEnabled = window.innerWidth > 768;
+
+if (particleTrailEnabled && introSection) {
+    let lastParticleTime = 0;
+    const particleInterval = 50; // Create particle every 50ms
+
+    introSection.addEventListener('mousemove', (e) => {
+        const currentTime = Date.now();
+
+        if (currentTime - lastParticleTime > particleInterval) {
+            createParticleTrail(e.clientX, e.clientY);
+            lastParticleTime = currentTime;
+        }
+    });
+}
+
+function createParticleTrail(x, y) {
+    const particle = document.createElement('div');
+    particle.className = 'particle-trail';
+    particle.style.left = x + 'px';
+    particle.style.top = y + 'px';
+
+    document.body.appendChild(particle);
+
+    // Remove particle after animation
+    setTimeout(() => {
+        particle.remove();
+    }, 1000);
+}
+
+// =========================================
+// 18. ENHANCED BUTTON RIPPLE EFFECT
+// =========================================
+const ctaButtons = document.querySelectorAll('.intro-cta .btn-primary, .intro-cta .btn-secondary');
+
+ctaButtons.forEach(button => {
+    button.addEventListener('click', function (e) {
+        const rect = this.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const ripple = document.createElement('span');
+        ripple.style.position = 'absolute';
+        ripple.style.left = x + 'px';
+        ripple.style.top = y + 'px';
+        ripple.style.width = '0';
+        ripple.style.height = '0';
+        ripple.style.borderRadius = '50%';
+        ripple.style.background = 'rgba(255, 255, 255, 0.6)';
+        ripple.style.transform = 'translate(-50%, -50%)';
+        ripple.style.animation = 'ripple 0.6s ease-out';
+        ripple.style.pointerEvents = 'none';
+
+        this.appendChild(ripple);
+
+        setTimeout(() => ripple.remove(), 600);
+    });
+});
+
+// Add ripple animation keyframes dynamically
+if (!document.querySelector('#ripple-animation')) {
+    const style = document.createElement('style');
+    style.id = 'ripple-animation';
+    style.textContent = `
+        @keyframes ripple {
+            to {
+                width: 200px;
+                height: 200px;
+                opacity: 0;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// =========================================
+// 19. FLOATING SHAPES PARALLAX EFFECT
+// =========================================
+const geometricShapes = document.querySelectorAll('.geometric-shape');
+
+if (geometricShapes.length > 0 && window.innerWidth > 768) {
+    window.addEventListener('mousemove', (e) => {
+        const mouseX = e.clientX / window.innerWidth;
+        const mouseY = e.clientY / window.innerHeight;
+
+        geometricShapes.forEach((shape, index) => {
+            const speed = (index + 1) * 0.5;
+            const x = (mouseX - 0.5) * speed * 20;
+            const y = (mouseY - 0.5) * speed * 20;
+
+            shape.style.transform = `translate(${x}px, ${y}px)`;
+        });
+    });
+}
+
+// =========================================
+// 20. TECH SECTION - TAB FILTERING & SCROLL
+// =========================================
+const techTabs = document.querySelectorAll('.tech-tab');
+const techCards = document.querySelectorAll('.tech-card');
+const techCardsWrapper = document.getElementById('tech-cards');
+const scrollLeftBtn = document.getElementById('scroll-left');
+const scrollRightBtn = document.getElementById('scroll-right');
+
+// Tab Filtering
+if (techTabs.length > 0) {
+    techTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const category = tab.getAttribute('data-category');
+
+            // Update active tab
+            techTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            // Filter cards
+            techCards.forEach(card => {
+                const cardCategory = card.getAttribute('data-category');
+
+                if (category === 'all' || cardCategory === category) {
+                    card.classList.remove('hidden');
+                    // Animate in
+                    card.style.animation = 'fadeInScale 0.5s ease forwards';
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            // Scroll to start
+            if (techCardsWrapper) {
+                techCardsWrapper.scrollTo({ left: 0, behavior: 'smooth' });
+            }
+        });
+    });
+}
+
+// Scroll Buttons
+if (scrollLeftBtn && scrollRightBtn && techCardsWrapper) {
+    scrollLeftBtn.addEventListener('click', () => {
+        techCardsWrapper.scrollBy({
+            left: -300,
+            behavior: 'smooth'
+        });
+    });
+
+    scrollRightBtn.addEventListener('click', () => {
+        techCardsWrapper.scrollBy({
+            left: 300,
+            behavior: 'smooth'
+        });
+    });
+
+    // Auto-hide scroll buttons at edges
+    techCardsWrapper.addEventListener('scroll', () => {
+        const scrollLeft = techCardsWrapper.scrollLeft;
+        const maxScroll = techCardsWrapper.scrollWidth - techCardsWrapper.clientWidth;
+
+        // Hide left button at start
+        if (scrollLeft <= 10) {
+            scrollLeftBtn.style.opacity = '0.3';
+            scrollLeftBtn.style.pointerEvents = 'none';
+        } else {
+            scrollLeftBtn.style.opacity = '1';
+            scrollLeftBtn.style.pointerEvents = 'auto';
+        }
+
+        // Hide right button at end
+        if (scrollLeft >= maxScroll - 10) {
+            scrollRightBtn.style.opacity = '0.3';
+            scrollRightBtn.style.pointerEvents = 'none';
+        } else {
+            scrollRightBtn.style.opacity = '1';
+            scrollRightBtn.style.pointerEvents = 'auto';
+        }
+    });
+
+    // Initial check
+    techCardsWrapper.dispatchEvent(new Event('scroll'));
+}
+
+// Add fadeInScale animation
+if (!document.querySelector('#tech-animations')) {
+    const style = document.createElement('style');
+    style.id = 'tech-animations';
+    style.textContent = `
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    `;
+    document.head.appendChild(style);
 }
 

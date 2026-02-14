@@ -1400,6 +1400,71 @@ body.light-theme .glass-nav {
     overflow: hidden;
 }
 
+/* Animated Gradient Mesh Background */
+.intro-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 20% 50%, rgba(0, 242, 255, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(123, 44, 191, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(255, 0, 110, 0.12) 0%, transparent 50%);
+    animation: gradientMesh 15s ease-in-out infinite;
+    z-index: 0;
+    pointer-events: none;
+}
+
+body.light-theme .intro-section::before {
+    background:
+        radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(236, 72, 153, 0.18) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(16, 185, 129, 0.15) 0%, transparent 50%);
+}
+
+@keyframes gradientMesh {
+
+    0%,
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.1) rotate(5deg);
+        opacity: 0.8;
+    }
+}
+
+/* Mouse-following Spotlight Effect */
+.intro-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+            rgba(0, 242, 255, 0.08) 0%,
+            transparent 60%);
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.intro-section:hover::after {
+    opacity: 1;
+}
+
+body.light-theme .intro-section::after {
+    background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+            rgba(99, 102, 241, 0.12) 0%,
+            transparent 60%);
+}
+
 .intro-bg-elements {
     position: absolute;
     top: 0;
@@ -1915,16 +1980,37 @@ body.light-theme .photo-border-animated {
     position: relative;
     overflow: hidden;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease;
 }
 
+/* Magnetic hover effect */
+.intro-glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 60px rgba(0, 242, 255, 0.2);
+}
+
+/* Animated top border glow */
 .intro-glass-card::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(0, 242, 255, 0.5), transparent);
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(0, 242, 255, 0.8), transparent);
+    animation: borderSweep 3s ease-in-out infinite;
+    z-index: 10;
+}
+
+@keyframes borderSweep {
+    0% {
+        left: -100%;
+    }
+
+    50%,
+    100% {
+        left: 100%;
+    }
 }
 
 body.light-theme .intro-glass-card {
@@ -4318,8 +4404,10 @@ body {
     }
 
     /* Section padding */
-    .section {
-        padding: 4rem 1rem;
+    .section,
+    .section-alt,
+    .section-dark {
+        padding: 2.5rem 1rem;
     }
 
     .section-title {
@@ -4339,7 +4427,7 @@ body {
 
     /* Skills / Arsenal */
     .arsenal-section {
-        padding: 4rem 1rem;
+        padding: 2.5rem 1rem;
     }
 
     .arsenal-subtitle {
@@ -4370,6 +4458,14 @@ body {
         min-height: auto;
     }
 
+    .project-thumb {
+        height: 160px;
+    }
+
+    .project-info {
+        padding: 1rem;
+    }
+
     /* Experience & Education Timeline */
     .timeline::after {
         left: 31px;
@@ -4377,12 +4473,13 @@ body {
 
     .timeline-item {
         width: 100%;
-        padding-left: 70px;
-        padding-right: 15px;
+        padding-left: 35px;
+        padding-right: 10px;
+        margin-bottom: 2rem;
     }
 
     .timeline-item::after {
-        left: 21px;
+        left: 17px;
     }
 
     .timeline-item.right {
@@ -4395,7 +4492,7 @@ body {
     }
 
     .timeline-content {
-        padding: 1.2rem;
+        padding: 1rem;
     }
 
     /* Certifications Category Accordion - Mobile */
@@ -4412,7 +4509,7 @@ body {
 
     .cert-grid {
         gap: 0.8rem;
-        padding: 0 0.5rem;
+        padding: 0;
     }
 
     .cert-category-header {
@@ -4443,7 +4540,7 @@ body {
     }
 
     .cert-list {
-        padding: 0 1rem 1.5rem 1rem;
+        padding: 0 0.5rem 1.2rem 0.5rem;
         padding-top: 1rem;
         gap: 0.8rem;
     }
@@ -4487,6 +4584,10 @@ body {
         gap: 1.5rem;
     }
 
+    .contact-info {
+        padding: 1.5rem;
+    }
+
     /* Unique Premium Contact Form Container */
     #contact-form {
         position: relative;
@@ -4495,7 +4596,7 @@ body {
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         border-radius: 24px;
-        padding: 3rem;
+        padding: 1.5rem;
         overflow: hidden;
         border: none;
         /* Remove default border to replace with animated one */
@@ -5981,4 +6082,36 @@ body.light-theme ::-webkit-scrollbar-thumb {
     background: linear-gradient(180deg, #6366f1, #ec4899);
     border: 2px solid #f1f5f9;
 
+}
+
+/* =========================================
+   MOBILE LAYOUT ADJUSTMENT: REDUCED GAP
+   ========================================= */
+@media (max-width: 900px) {
+    #about {
+        padding-bottom: 2rem !important;
+        /* Significantly reduced */
+    }
+
+    #education {
+        padding-top: 1rem !important;
+        /* Significantly reduced */
+    }
+
+    #skills {
+        padding-top: 1rem !important;
+    }
+
+    /* Widen About Me Box */
+    .about-card,
+    .about-stats {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    #about .container {
+        padding-left: 1rem !important;
+        /* Reduce container padding to give more width to card */
+        padding-right: 1rem !important;
+    }
 }
