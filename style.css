@@ -4317,10 +4317,10 @@ body.light-theme .cert-item:hover {
 }
 
 body.light-theme .social-icons-container {
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(236, 72, 153, 0.08));
-    border-radius: 30px;
-    padding: 3rem;
-    box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.5);
+    background: transparent;
+    border-radius: 0;
+    padding: 2rem;
+    box-shadow: none;
 }
 
 body.light-theme .social-icon {
@@ -4373,10 +4373,222 @@ body.light-theme .social-icon {
     box-shadow: 0 4px 12px rgba(99, 102, 241, 0.05);
 }
 
+/* Brand Colors for Social Icons in Dark Theme (Default) */
+.social-icon[aria-label="Email"] {
+    color: #ea4335;
+    border-color: rgba(234, 67, 53, 0.4);
+    background: rgba(234, 67, 53, 0.1);
+}
+
+.social-icon[aria-label="LinkedIn"] {
+    color: #0077b5;
+    border-color: rgba(0, 119, 181, 0.4);
+    background: rgba(0, 119, 181, 0.1);
+}
+
+.social-icon[aria-label="GitHub"] {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.social-icon[aria-label="Instagram"] {
+    color: #e1306c;
+    border-color: rgba(225, 48, 108, 0.4);
+    background: rgba(225, 48, 108, 0.1);
+}
+
+.social-icon[aria-label="Facebook"] {
+    color: #1877f2;
+    border-color: rgba(24, 119, 242, 0.4);
+    background: rgba(24, 119, 242, 0.1);
+}
+
+.social-icon[aria-label="LeetCode"] {
+    color: #ffa116;
+    border-color: rgba(255, 161, 22, 0.4);
+    background: rgba(255, 161, 22, 0.1);
+}
+
+.social-icon[aria-label="WhatsApp"] {
+    color: #25d366;
+    border-color: rgba(37, 211, 102, 0.4);
+    background: rgba(37, 211, 102, 0.1);
+}
+
+.social-icon[aria-label="X (Twitter)"] {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Hover states with full color fill for Dark Theme */
+.social-icon[aria-label="Email"]:hover {
+    background: #ea4335;
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 10px 25px rgba(234, 67, 53, 0.5);
+}
+
+.social-icon[aria-label="LinkedIn"]:hover {
+    background: #0077b5;
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 10px 25px rgba(0, 119, 181, 0.5);
+}
+
+.social-icon[aria-label="GitHub"]:hover {
+    background: #fff;
+    color: #000;
+    border-color: transparent;
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.5);
+}
+
+.social-icon[aria-label="Instagram"]:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 10px 25px rgba(225, 48, 108, 0.5);
+}
+
+.social-icon[aria-label="Facebook"]:hover {
+    background: #1877f2;
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 10px 25px rgba(24, 119, 242, 0.5);
+}
+
+.social-icon[aria-label="LeetCode"]:hover {
+    background: #ffa116;
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 10px 25px rgba(255, 161, 22, 0.5);
+}
+
+.social-icon[aria-label="WhatsApp"]:hover {
+    background: #25d366;
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.5);
+}
+
+.social-icon[aria-label="X (Twitter)"]:hover {
+    background: #fff;
+    color: #000;
+    border-color: transparent;
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.5);
+}
+
 body.light-theme .social-icon:hover {
     background: #fff;
     border-color: rgba(99, 102, 241, 0.4);
     box-shadow: 0 8px 25px rgba(99, 102, 241, 0.15);
+}
+
+/* Brand Colors for Social Icons in Light Theme */
+body.light-theme .social-icon[aria-label="Email"] {
+    color: #ea4335;
+    border-color: rgba(234, 67, 53, 0.2);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+body.light-theme .social-icon[aria-label="LinkedIn"] {
+    color: #0077b5;
+    border-color: rgba(0, 119, 181, 0.2);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+body.light-theme .social-icon[aria-label="GitHub"] {
+    color: #333;
+    border-color: rgba(51, 51, 51, 0.2);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+body.light-theme .social-icon[aria-label="Instagram"] {
+    color: #e1306c;
+    border-color: rgba(225, 48, 108, 0.2);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+body.light-theme .social-icon[aria-label="Facebook"] {
+    color: #1877f2;
+    border-color: rgba(24, 119, 242, 0.2);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+body.light-theme .social-icon[aria-label="LeetCode"] {
+    color: #ffa116;
+    border-color: rgba(255, 161, 22, 0.2);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+body.light-theme .social-icon[aria-label="WhatsApp"] {
+    color: #25d366;
+    border-color: rgba(37, 211, 102, 0.2);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+body.light-theme .social-icon[aria-label="X (Twitter)"] {
+    color: #000;
+    border-color: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.05);
+}
+
+/* Hover states with full color fill for Light Theme */
+body.light-theme .social-icon[aria-label="Email"]:hover {
+    background: #ea4335;
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 10px 25px rgba(234, 67, 53, 0.4);
+}
+
+body.light-theme .social-icon[aria-label="LinkedIn"]:hover {
+    background: #0077b5;
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 10px 25px rgba(0, 119, 181, 0.4);
+}
+
+body.light-theme .social-icon[aria-label="GitHub"]:hover {
+    background: #333;
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 10px 25px rgba(51, 51, 51, 0.4);
+}
+
+body.light-theme .social-icon[aria-label="Instagram"]:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 10px 25px rgba(225, 48, 108, 0.4);
+}
+
+body.light-theme .social-icon[aria-label="Facebook"]:hover {
+    background: #1877f2;
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 10px 25px rgba(24, 119, 242, 0.4);
+}
+
+body.light-theme .social-icon[aria-label="LeetCode"]:hover {
+    background: #ffa116;
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 10px 25px rgba(255, 161, 22, 0.4);
+}
+
+body.light-theme .social-icon[aria-label="WhatsApp"]:hover {
+    background: #25d366;
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+}
+
+body.light-theme .social-icon[aria-label="X (Twitter)"]:hover {
+    background: #000;
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 }
 
 /* Platform-specific colors on hover */
@@ -4594,6 +4806,7 @@ body {
         padding: 0;
         max-width: 100% !important;
         /* Force full width on mobile */
+        margin: 0 auto;
     }
 
     .cert-category-header {
@@ -5697,6 +5910,7 @@ body.light-theme #contact-form {
     box-shadow:
         0 20px 80px rgba(99, 102, 241, 0.25),
         inset 0 0 40px rgba(99, 102, 241, 0.1);
+    border: none !important;
 }
 
 body.light-theme #contact-form::before {
